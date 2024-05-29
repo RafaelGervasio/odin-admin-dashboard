@@ -1,3 +1,4 @@
+
 html {
 
 box-sizing: border-box;
@@ -107,11 +108,14 @@ overflow-wrap: break-word;
 }
 
 
+
 :root {
 	--primary-blue: #158DBF;
 	--primary-orange: #BF4715;
 	--dark: #000000;
 	--light: #FFFFFF;
+	--text-grey: #999;
+	--bg-grey: #E2E9EF;
 }
 
 
@@ -121,19 +125,36 @@ body {
 	font-family: "Roboto", sans-serif;
 }
 
+
 .website-container {
 	height: 100vh;
 	width: 100vw;
 
 	display: grid;
 	/*1100 / 300 = 3.7*/
-	grid-template-columns: 1fr 4fr;
+	grid-template-columns: 18rem 4fr;
 	grid-template-areas: "sidebar header" "sidebar body";
-
 }
+
+
+.header{
+	grid-area: header;
+}
+
+.body{
+	grid-area: body;
+}
+
 
 .sidebar{
 	grid-area: sidebar;
+
+	width: 18rem;
+
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
 
 	background-color: var(--primary-blue);
 	color: var(--light);
@@ -145,18 +166,13 @@ body {
 	gap: 4rem;
 
 	padding-left: 1.2rem;
+	padding-right: 1.2rem;
 	padding-top: 1.2rem;
 }
 
 .sidebar-top, .sidebar-mid > div, .sidebar-bottom > div{
 	display: flex;
 	gap: 1rem;
-}
-
-
-.sidebar-top, .sidebar-mid .item, .sidebar-bottom .item{
-	display: flex;
-	align-items: center;
 }
 
 
@@ -173,6 +189,10 @@ body {
 }
 
 .sidebar-mid, .sidebar-bottom{
+/*	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;*/
+
 	display: grid;
 	gap: 1.5rem;
 }
@@ -183,16 +203,291 @@ body {
 	font-weight: 700;
 }
 
+
 .sidebar-mid, .sidebar-bottom{
 	font-size: 1.2rem;
 }
 
 
-.header{
-	grid-area: header;
+
+.header .top {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+	margin-top: .8rem;
 }
 
-.body{
-	grid-area: body;
+.header .top .left, .header .top .right {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
 }
+
+.header .top .left{
+	margin-left: 2rem;
+}
+
+input {
+	border: none;
+	background-color: var(--bg-grey);
+
+	border-radius: 2rem;
+
+	padding-left: 1rem;
+	padding-top: .5rem;
+	padding-bottom: .5rem;
+	padding-right: 20rem;
+}
+
+
+.header .top .right{
+	margin-right: 2rem;
+}
+
+
+
+.header .left > img, .header .right > img, .header .left > svg, .header .right > svg{
+	width: 1.6rem;
+	height: auto;
+}
+
+
+.header .top .right img{
+	width: 3.5rem;
+	height: auto;
+}
+
+
+.header .bottom{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header .bottom .left{
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+
+	margin-left: 2rem;
+}
+
+.header .bottom .right {
+	margin-right: 2rem;
+}
+
+
+.header .bottom .left img{
+	width: 4.5rem;
+	height: auto;
+}
+
+.header .bottom p{
+	font-size: 1rem;
+	margin-bottom: 0.5rem;
+}
+
+.header .bottom h1{
+	font-size: 1.7rem;
+	font-weight: 500;
+}
+
+
+.header .bottom .right {
+	display: flex;
+	gap: 1.5rem;
+}
+
+.header .bottom .right button {
+	background-color: var(--primary-blue);
+	color: var(--light);
+
+	border: none;
+	border-radius: 1.5rem;
+
+	width: 6.5rem;
+	height: 2.3rem;
+
+	font-size: .9rem;
+
+	font-weight: 500;
+
+
+}
+
+
+
+
+.header{
+	padding-bottom: 2rem;
+}
+
+
+.body {
+	background-color: var(--bg-grey);
+
+	display: grid;
+	grid-template-columns: 1fr 18rem;
+	grid-template-areas: "your-projects announcements" "your-projects trending";
+
+	padding: 1.5rem;
+}
+
+.your-projects {
+	grid-area: your-projects;
+	margin-right: 1.5rem;
+}
+
+.announcements {
+	grid-area: announcements;
+}
+
+.trending{
+	grid-area: trending;
+}
+
+
+.your-projects .wrapper{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: repeat(3, 1fr);
+	grid-gap: 2rem;
+}
+
+.your-projects .header-text{
+	margin-bottom: 1.2rem;
+	font-size: 1.3rem;
+	font-weight: 400;
+}
+
+.article{
+	min-height: 13rem;
+
+	display: flex;
+	flex-direction: column;
+
+	background-color: var(--light);
+	padding: 1.5rem;
+	border-left: 8px solid var(--primary-orange);
+	
+	border-radius: .45rem;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.article svg {
+	width: 1.5rem;
+	height: auto;
+}
+
+.article .title {
+	font-size: 1.2rem;
+	font-weight: 500;
+	padding-bottom: .3rem;
+}
+
+.article .article-body {
+	color: var(--text-grey);
+	font-size: .9rem;
+	font-weight: 300;
+}
+
+.article .icon-wrapper {
+	margin-top: auto;
+	display: flex;
+	justify-content: end;
+	gap: .4rem;
+
+/*	border: 0.5px solid;*/
+
+}
+
+
+.announcements{
+	max-width: 18rem;
+}
+
+.announcements .header-text{
+	margin-bottom: 1.2rem;
+	font-size: 1.3rem;
+}
+
+.announcements .wrapper {
+	background-color: var(--light);
+
+/*	display: flex;
+	flex-direction: column;*/
+	padding: 1.5rem;
+
+	border-radius: .45rem;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+	
+
+.announcements .item{
+	border-bottom: .2px solid #DAE3EC;
+	padding-bottom: 1rem;
+	padding-top: 1rem;
+}
+
+
+.announcements .item h4{
+	padding-bottom: .25rem;
+}
+
+.announcements .item p{
+	color: var(--text-grey);
+	font-size: .8rem;
+	font-weight: 300;
+}
+
+.announcements .wrapper .item:last-child{
+	border-bottom: 0px;
+}
+
+
+.trending{
+	max-width: 18rem;	
+}
+
+.trending .header-text{
+	margin-bottom: 1.2rem;
+	font-size: 1.3rem;
+}
+
+
+.trending .wrapper {
+	background-color: var(--light);
+
+/*	display: grid;*/
+	display: flex;
+	flex-direction: column;
+		/* I need to use Flex or Grid or else I can't use gap */
+
+	padding: 2rem;
+	gap: 1rem;
+
+	border-radius: .45rem;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.trending .wrapper .item{
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	font-size: 1.2rem;
+}
+
+.trending .item img{
+	width: 2.5rem;
+	height: auto;
+}
+
+.trending .item p{
+	font-size: .85rem;
+}
+
+
 
